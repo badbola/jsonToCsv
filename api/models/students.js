@@ -18,7 +18,11 @@ const interviewSchema = mongoose.Schema({
 //schema for patient
 const studentSchema = mongoose.Schema(
   {
-    _id: mongoose.Schema.Types.ObjectId,
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     name: {
       type: String,
       required: true,
@@ -29,7 +33,6 @@ const studentSchema = mongoose.Schema(
     uploaded_by: {
       type: String,
       ref: "Users",
-      required: true,
     },
   },
   {
@@ -38,3 +41,6 @@ const studentSchema = mongoose.Schema(
 );
 
 module.exports = mongoose.model("students", studentSchema);
+// module.exports = mongoose.model("detail", detailSchema);
+// module.exports = mongoose.model("score", scoreSchema);
+// module.exports = mongoose.model("interview", interviewSchema);

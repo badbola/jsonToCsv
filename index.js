@@ -10,6 +10,8 @@ const bodyParser = require("body-parser");
 
 const userRoute = require("./api/routes/user");
 
+const studentRoute = require("./api/routes/student");
+
 //extended false so that only fetch JSON files
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -29,6 +31,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/users", userRoute);
+app.use("/student", studentRoute);
 
 app.use((req, res, next) => {
   const err = new Error("Uh Oh! Seems like you are lost");
