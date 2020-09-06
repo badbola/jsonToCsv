@@ -4,7 +4,11 @@ const port = 8000;
 
 const app = express();
 
+const mongoose = require("./api/config/mongoose");
+
 const bodyParser = require("body-parser");
+
+const userRoute = require("./api/routes/user");
 
 //extended false so that only fetch JSON files
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +27,8 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.use("/users", userRoute);
 
 app.use((req, res, next) => {
   const err = new Error("Uh Oh! Seems like you are lost");
